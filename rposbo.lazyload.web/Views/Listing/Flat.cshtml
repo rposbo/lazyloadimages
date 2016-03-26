@@ -1,0 +1,42 @@
+﻿@model rposbo.lazyload.web.Models.ListingViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Flat Listing</title>
+    <style>
+        .item {
+            width: 300px;
+            display: inline-block;
+        }
+
+            .item .itemtitle {
+                font-weight: bold;
+                font-size: 2em;
+            }
+
+    </style>
+</head>
+<body>
+    <h1>@Model.Title</h1>
+    <div id="listing">
+
+        @for (var i =0; i< Model.All.Count; i++)
+        {
+            <div class="item">
+                <a name="@i"><!-- Anchor so the View More link focusses on where the user left off --></a>
+                <img src="@Model.All[i].ImageUrl"
+                     alt="@Model.All[i].Title"
+                     width="300" />
+                <span class="itemtitle">@Model.All[i].Title</span>
+            </div>
+        }
+
+    </div>
+</body>
+</html>
